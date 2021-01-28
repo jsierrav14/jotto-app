@@ -1,12 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { findByTestAttr, storeFactory } from '../test/testUtil'
-import Input from './Input'
+import Input from './input'
 
 
 const setup = (initialState = {}) => {
     const store = storeFactory(initialState)
-    console.log("STORE",store.getState())
     const wrapper = shallow(<Input store={store} />).dive().dive()
 
     return wrapper
