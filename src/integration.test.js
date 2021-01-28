@@ -1,15 +1,34 @@
 import {storeFactory} from '../test/testUtil'
-import {guessedWord} from './store/actions/index'
+import {guessWord} from './store/actions/index'
 
 describe('guessWord action dispatcher',()=>{
 
+    const secretWord ='party'
+    const unsuccessfulGuess =  'train';
     describe('No guessed words',()=>{
 
-        test("uodates state correctly for unseccessful guess",()=>{
+        let store;
+        const initialState = {secretWord}
+        beforeEach(()=>{
+            store = storeFactory(initialState)
+        })
+        test("updates state correctly for unseccessful guess",()=>{
 
+            store.dispatch(guessWord(unsuccessfulGuess));
+            const newState = store.getState()
+
+            const expectedState = {
+               ...initialState,
+               success:false,
+               guessedWords: [{
+                   guessedWord:unsuccessfulGuess,
+                   letterMatchCount:3
+               }]
+            }
+            expect(newState).toEqual(expectedState)
         })
 
-        test("uodates state correctly for seccessful guess",()=>{
+        test("updates state correctly for seccessful guess",()=>{
             
         })
 

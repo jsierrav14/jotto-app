@@ -3,7 +3,7 @@ export const actionTypes ={
     GUESS_WORD:"GUESS_WORD"
 }
 
-export const gueesWord =(guessedWord) =>{
+export const guessWord =(guessedWord) =>{
 
     return function(dispatch,getState){
         
